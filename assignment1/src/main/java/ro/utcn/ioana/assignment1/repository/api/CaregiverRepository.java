@@ -7,8 +7,11 @@ import java.util.Optional;
 
 public interface CaregiverRepository {
     Caregiver save(Caregiver caregiver);
+
     Optional<Caregiver> findById(int id);
-    void  remove(Caregiver caregiver);
+
+    void remove(Caregiver caregiver);
+
     List<Caregiver> findAll();
 
 }

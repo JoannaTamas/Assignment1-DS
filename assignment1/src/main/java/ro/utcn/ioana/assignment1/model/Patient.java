@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -18,11 +15,12 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ID;
     private String name;
-    private String birthdate;
+    private String birth_date;
     private String gender;
-    private String address;
-    private String medicalRecord;
+    private String addr;
+    private String medical_record;
 
-
-
+    @ManyToOne
+    @JoinColumn
+    private Caregiver caregiver;
 }

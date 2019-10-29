@@ -16,12 +16,13 @@ public class Caregiver {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ID;
     private String name;
-    private String birthdate;
-   private String gender;
-   private String address;
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn
-   private List<Patient> patients;
+    private String birth_date;
+    private String gender;
+    private String addr;
+
+
+    @OneToMany(mappedBy = "caregiver", cascade = CascadeType.ALL)
+    private List<Patient> patients;
 
 
 }

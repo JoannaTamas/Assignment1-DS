@@ -7,14 +7,14 @@ import ro.utcn.ioana.assignment1.model.Medication;
 public class MedicationDTO {
     private Integer id;
     private String name;
-    private String sideEffects;
+    private String side_effects;
     private Double dosage;
 
-    public static MedicationDTO ofEntity(Medication medication){
-        MedicationDTO medicationDTO=new MedicationDTO();
+    public static MedicationDTO ofEntity(Medication medication) {
+        MedicationDTO medicationDTO = new MedicationDTO();
         medicationDTO.setId(medication.getID());
         medicationDTO.setName(medication.getName());
-        medicationDTO.setSideEffects(medication.getSideEffect());
+        medicationDTO.setSide_effects(medication.getSide_effects());
         medicationDTO.setDosage(medication.getDosage());
 
         return medicationDTO;

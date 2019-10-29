@@ -19,7 +19,7 @@ public class CaregiverManagementService {
     private final RepositoryFactory repositoryFactory;
 
     @Transactional
-    public List<CaregiverDTO> listCaregiverDTO(){
+    public List<CaregiverDTO> listCaregiverDTO() {
 
         return repositoryFactory.createCaregiverRepository().findAll().stream()
                 .map(CaregiverDTO::ofEntity)
@@ -27,24 +27,24 @@ public class CaregiverManagementService {
     }
 
     @Transactional
-    public CaregiverDTO addCaregiverDTO(CaregiverDTO dto){
-        Caregiver caregiver=new Caregiver();
+    public CaregiverDTO addCaregiverDTO(CaregiverDTO dto) {
+        Caregiver caregiver = new Caregiver();
 
         caregiver.setID(dto.getId());
         caregiver.setName(dto.getName());
-        caregiver.setBirthdate(dto.getBirthdate());
-        caregiver.setAddress(dto.getAddress());
+        caregiver.setBirth_date(dto.getBirth_date());
+        caregiver.setAddr(dto.getAddr());
         caregiver.setGender(dto.getGender());
 
 
-        CaregiverDTO output=CaregiverDTO.ofEntity(repositoryFactory.createCaregiverRepository().save(caregiver));
+        CaregiverDTO output = CaregiverDTO.ofEntity(repositoryFactory.createCaregiverRepository().save(caregiver));
         //  eventPublisher.publishEvent(new PatientCreatedEvent(output));
         return output;
 
     }
 
     @Transactional
-    public void removeCaregiver(int id){
+    public void removeCaregiver(int id) {
         CaregiverRepository repository = repositoryFactory.createCaregiverRepository();
         Caregiver caregiver = repository.findById(id).orElseThrow(CaregiverNotFoundException::new);
         repository.remove(caregiver);

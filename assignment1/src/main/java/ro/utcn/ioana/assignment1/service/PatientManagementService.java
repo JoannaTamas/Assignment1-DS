@@ -18,33 +18,43 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PatientManagementService {
     private final RepositoryFactory repositoryFactory;
-    private final PatientRepository patientRepository;
+   // private final PatientRepository patientRepository;
     private final ApplicationEventPublisher eventPublisher;
 
     @Transactional
-    public List<PatientDTO> listPatientsDTO(){
+    public List<PatientDTO> listPatientsDTO() {
         return repositoryFactory.createPatientRepository().findAll().stream()
                 .map(PatientDTO::ofEntity)
                 .collect(Collectors.toList());
     }
 
     @Transactional
-    public PatientDTO addPatientDTO(PatientDTO dto){
-        Patient patient=new Patient();
+    public PatientDTO addPatientDTO(PatientDTO dto) {
+        Patient patient = new Patient();
         patient.setID(dto.getId());
         patient.setName(dto.getName());
-        patient.setAddress(dto.getAddress());
-        patient.setBirthdate(dto.getBirthdate());
+        patient.setAddr(dto.getAddr());
+        patient.setBirth_date(dto.getBirth_date());
         patient.setGender(dto.getGender());
+        patient.setMedical_record(dto.getMedical_record());
 
-        PatientDTO output=PatientDTO.ofEntity(repositoryFactory.createPatientRepository().save(patient));
-      //  eventPublisher.publishEvent(new PatientCreatedEvent(output));
-    return output;
+        PatientDTO output = PatientDTO.ofEntity(repositoryFactory.createPatientRepository().save(patient));
+        //  eventPublisher.publishEvent(new PatientCreatedEvent(output));
+        return output;
 
     }
 
 
-     @Transactional
+    @Transactional
+    public PatientDTO editPatient(PatientDTO patientDTO,int id) {
+        Patient existingPatient = repositoryFactory.createPatientRepository().findById(id).orElseThrow(PatientNotFoundException::new);
+        existingPatient.setMedical_record(patientDTO.getMedical_record());
+        PatientDTO output = PatientDTO.ofEntity(repositoryFactory.createPatientRepository().save(existingPatient));
+        return output;
+
+    }
+
+    @Transactional
     public void removePatient(int id) {
         PatientRepository repository = repositoryFactory.createPatientRepository();
         Patient patient = repository.findById(id).orElseThrow(PatientNotFoundException::new);
@@ -52,20 +62,9 @@ public class PatientManagementService {
 
     }
 
-     /*
-    public Integer updatePatient(PatientDTO patientDTO){
-        Optional<Patient> patient=patientRepository.findById(patientDTO.getId());
-        if(!patient.isPresent()){
 
-              throw new ResourceNotFoundException("Person", "user id", personDTO.getId().toString());
-        }
-        PersonFieldValidator.validateInsertOrUpdate(personDTO);
 
-        return personRepository.save(PersonBuilder.generateEntityFromDTO(personDTO)).getId();
-
-        }
-    }
- */
+/*
 
 
 
@@ -76,10 +75,7 @@ public class PatientManagementService {
         return repositoryFactory.createPatientRepository().save(patient);
     }
 
-
-
-
-
+*/
 
 
 }

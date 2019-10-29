@@ -23,7 +23,7 @@ public class MedicationManagementSevice {
     private final ApplicationEventPublisher eventPublisher;
 
     @Transactional
-    public List<MedicationDTO> listMedicationDTO(){
+    public List<MedicationDTO> listMedicationDTO() {
 
         return repositoryFactory.createMedicationRepository().findAll().stream()
                 .map(MedicationDTO::ofEntity)
@@ -32,15 +32,15 @@ public class MedicationManagementSevice {
 
 
     @Transactional
-    public MedicationDTO addPatientDTO(MedicationDTO dto){
-        Medication medication=new Medication();
+    public MedicationDTO addMedicationDTO(MedicationDTO dto) {
+        Medication medication = new Medication();
         medication.setID(dto.getId());
         medication.setName(dto.getName());
-        medication.setSideEffect(medication.getSideEffect());
+        medication.setSide_effects(medication.getSide_effects());
         medication.setDosage(medication.getDosage());
 
 
-        MedicationDTO output=MedicationDTO.ofEntity(repositoryFactory.createMedicationRepository().save(medication));
+        MedicationDTO output = MedicationDTO.ofEntity(repositoryFactory.createMedicationRepository().save(medication));
         //  eventPublisher.publishEvent(new PatientCreatedEvent(output));
         return output;
 
@@ -54,7 +54,6 @@ public class MedicationManagementSevice {
         repository.remove(medication);
 
     }
-
 
 
 }

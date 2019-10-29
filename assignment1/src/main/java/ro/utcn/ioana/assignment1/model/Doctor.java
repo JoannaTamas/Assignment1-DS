@@ -1,4 +1,5 @@
 package ro.utcn.ioana.assignment1.model;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -9,8 +9,10 @@ export default class SmartDoctorOperations extends Component {
     render() {
         return (
             <DoctorOperations
-                 onListPatients  ={operationsPresenter.onListPatients}
+               
                  onPatientOps= {operationsPresenter.onPatientOps }
+                 onMedicationOps={operationsPresenter.onMedicationOps}
+                 onCaregiverOps={operationsPresenter.onCaregiverOps}
 
                 
                 

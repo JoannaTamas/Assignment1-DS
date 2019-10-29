@@ -1,12 +1,12 @@
 import React from "react";
 
-const PatientsList = ({ patients }) => (
+const PatientEdit = ({ patients, onEdit,newRecord,onChange }) => (
     
     <div>
         <div class="jumbotron jumbotron-fluid">  
    
         <div class="container "> 
-         <h1 >All the patients</h1>
+         <h1 >Patients</h1>
 
        
          <table class="table table-bordered">
@@ -17,6 +17,7 @@ const PatientsList = ({ patients }) => (
                     <th>Gender</th>
                     <th>Address</th>
                     <th>Medical Record</th>
+                  
 
 
               
@@ -25,14 +26,19 @@ const PatientsList = ({ patients }) => (
             </thead>
             <tbody>
                 {
-                    patients.map((patient, index) => (
+                        patients.map((patient, index) => (
                         <tr class="table-light" key={index}>
                             <td>{patient.name}</td>
                             <td>{patient.birth_date}</td>
                             <td>{patient.gender}</td>
                             <td>{patient.addr}</td>
-                            <td>{patient.medical_record}</td>
- 
+                           
+
+                            <label>Medical_record: </label>
+                  
+                    <input value={newRecord} onChange={ e => onChange("medical_record", e.target.value)} />
+                    <br />
+                    <button onClick = {() => onEdit(index)}>Update</button>
                           
                         </tr>
                     ))
@@ -47,4 +53,4 @@ const PatientsList = ({ patients }) => (
     
 );
 
-export default PatientsList;
+export default PatientEdit;

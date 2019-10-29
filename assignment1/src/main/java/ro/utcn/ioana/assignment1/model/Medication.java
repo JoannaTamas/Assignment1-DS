@@ -1,4 +1,5 @@
 package ro.utcn.ioana.assignment1.model;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ public class Medication {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ID;
     private String name;
-    private String sideEffect;
+    private String side_effects;
     private Double dosage;
 
 

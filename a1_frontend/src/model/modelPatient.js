@@ -1,4 +1,9 @@
 import {EventEmitter} from "events";
+import RestClient from "../rest/RestClient";
+
+
+
+const client= new RestClient("doctor","password");
 
 
 class Model extends EventEmitter{
@@ -25,6 +30,7 @@ class Model extends EventEmitter{
                 addr:"",
                 medical_record:""
             },
+            selectedPatientIndex: -1
 
         };
     }
@@ -37,10 +43,6 @@ class Model extends EventEmitter{
     }
 
     
- 
-
-
-
 
 changeNewPatientProperty(property,value) {
     this.state = {
@@ -63,8 +65,73 @@ newPatientList(patients){
 
 }
 
+/*
+deletePatient(id){
+    this.state = {
+        ...this.state,
+        patients: this.state.patients.splice(id, 1)
+    };
+    this.emit("change", this.state);
+}
+
+
+*/
+loadPatients(){
+    return client.loadAllPatients().then(patients => {
+        this.state = { 
+            ...this.state, 
+            patients: patients
+        };
+        this.emit("change", this.state);
+    })
+}
+
+
+
+addPatient(name,birth_date,gender,addr,medical_record){
+    return client.createPatient(name,birth_date,gender,addr,medical_record)
+    .then(patient=> this.appendPatient(patient));
 
 }
+
+
+deletePatient(index){
+    var id=this.getPatientId(index);
+    return client.deletePatient(id);
+}
+
+getPatientId(index){
+    return this.state.patients[index].id;
+
+}
+
+
+
+appendPatient(patient){
+    this.state = {
+        ...this.state,
+        patients: this.state.patients.concat([patient])
+    };
+   
+    this.emit("change", this.state);
+
+}
+
+
+editPatient(medical_record, index){
+    var id = this.getPatientId(index);
+
+    return client.editPatient(medical_record, id).then(patient=>{
+        this.setState = {
+            ...this.state[index],
+            medical_record: medical_record
+        }
+});
+} 
+
+
+}
+
 
 
 const modelPatient = new Model();

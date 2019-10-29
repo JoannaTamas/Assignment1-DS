@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface DoctorRepository {
     Optional<Doctor> findById(int id);
+
 }

@@ -16,18 +16,18 @@ public class HibernateMedicationRepository implements MedicationRepository {
 
     @Override
     public List<Medication> findAll() {
-        CriteriaBuilder builder=entityManager.getCriteriaBuilder();
-        CriteriaQuery<Medication> query=builder.createQuery(Medication.class);
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Medication> query = builder.createQuery(Medication.class);
         query.select(query.from(Medication.class));
         return entityManager.createQuery(query).getResultList();
     }
 
     @Override
     public Medication save(Medication medication) {
-        if(medication.getID()==null){
+        if (medication.getID() == null) {
             entityManager.persist(medication);
             return medication;
-        }else {
+        } else {
             return entityManager.merge(medication);
         }
     }
@@ -39,6 +39,6 @@ public class HibernateMedicationRepository implements MedicationRepository {
 
     @Override
     public Optional<Medication> findById(int id) {
-        return Optional.ofNullable(entityManager.find(Medication.class,id));
+        return Optional.ofNullable(entityManager.find(Medication.class, id));
     }
 }

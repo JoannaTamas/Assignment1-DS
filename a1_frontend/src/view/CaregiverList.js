@@ -1,12 +1,12 @@
 import React from "react";
 
-const PatientsList = ({ patients }) => (
+const CaregiverList = ({ caregivers }) => (
     
     <div>
         <div class="jumbotron jumbotron-fluid">  
    
         <div class="container "> 
-         <h1 >All the patients</h1>
+         <h1 >All the caregivers</h1>
 
        
          <table class="table table-bordered">
@@ -16,7 +16,7 @@ const PatientsList = ({ patients }) => (
                     <th>Birth Date</th>
                     <th>Gender</th>
                     <th>Address</th>
-                    <th>Medical Record</th>
+                    <th>Patients</th>
 
 
               
@@ -25,13 +25,13 @@ const PatientsList = ({ patients }) => (
             </thead>
             <tbody>
                 {
-                    patients.map((patient, index) => (
+                    caregivers.map((caregiver, index) => (
                         <tr class="table-light" key={index}>
-                            <td>{patient.name}</td>
-                            <td>{patient.birth_date}</td>
-                            <td>{patient.gender}</td>
-                            <td>{patient.addr}</td>
-                            <td>{patient.medical_record}</td>
+                            <td>{caregiver.name}</td>
+                            <td>{caregiver.birth_date}</td>
+                            <td>{caregiver.gender}</td>
+                            <td>{caregiver.addr}</td>
+                            <td>{caregiver.patients}</td>
  
                           
                         </tr>
@@ -47,4 +47,4 @@ const PatientsList = ({ patients }) => (
     
 );
 
-export default PatientsList;
+export default CaregiverList;

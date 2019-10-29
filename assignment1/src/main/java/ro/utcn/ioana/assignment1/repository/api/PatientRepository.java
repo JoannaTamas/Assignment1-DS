@@ -8,7 +8,10 @@ import java.util.Optional;
 public interface PatientRepository {
 
     List<Patient> findAll();
+
     Patient save(Patient save);
+
     void remove(Patient remove);
+
     Optional<Patient> findById(int id);
 }

@@ -17,17 +17,17 @@ public class HibernateCaregiverRepository implements CaregiverRepository {
 
     @Override
     public Caregiver save(Caregiver caregiver) {
-        if(caregiver.getID()==null){
+        if (caregiver.getID() == null) {
             entityManager.persist(caregiver);
             return caregiver;
-        }else{
+        } else {
             return entityManager.merge(caregiver);
         }
     }
 
     @Override
     public Optional<Caregiver> findById(int id) {
-        return Optional.ofNullable(entityManager.find(Caregiver.class,id));
+        return Optional.ofNullable(entityManager.find(Caregiver.class, id));
     }
 
     @Override
@@ -38,8 +38,8 @@ public class HibernateCaregiverRepository implements CaregiverRepository {
 
     @Override
     public List<Caregiver> findAll() {
-        CriteriaBuilder builder=entityManager.getCriteriaBuilder();
-        CriteriaQuery<Caregiver> query=builder.createQuery(Caregiver.class);
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Caregiver> query = builder.createQuery(Caregiver.class);
         query.select(query.from(Caregiver.class));
         return entityManager.createQuery(query).getResultList();
     }

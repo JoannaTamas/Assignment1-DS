@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import  modelPatient from "../model/modelPatient";
-import PatientsList from "./PatientsList";
+import PatientDelete from "./PatientDelete";
 import patientsListPresenter from "../presenter/patientsListPresenter";
+import operationsPresenter from "../presenter/operationsPresenter";
 
 
 
@@ -9,7 +10,7 @@ const mapModelStateToComponentState = modelState => ({
     patients: modelState.patients
 });
 
-export default class SmartPatientsList extends Component {
+export default class SmartPatientDelete extends Component {
     constructor() {
         super();
         this.state = mapModelStateToComponentState( modelPatient.state);
@@ -24,11 +25,8 @@ export default class SmartPatientsList extends Component {
 
     render() {
         return (
-            <PatientsList 
-               // onViewDetails={questionsListPresenter.onViewDetails}
-               // onCreateAppointment={appointmentsListPresenter.onCreateAppointment}
-              // onDelete={patientsListPresenter.onDeleteAppointment}
-              
+            <PatientDelete
+              onDeletePatient={operationsPresenter.onDeletePatient}
               patients={this.state.patients} />
         );
     }

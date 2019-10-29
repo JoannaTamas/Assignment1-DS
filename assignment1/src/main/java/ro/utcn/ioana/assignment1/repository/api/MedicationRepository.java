@@ -8,8 +8,11 @@ import java.util.Optional;
 public interface MedicationRepository {
 
     List<Medication> findAll();
-    Medication save (Medication medication);
+
+    Medication save(Medication medication);
+
     void remove(Medication medication);
+
     Optional<Medication> findById(int id);
 
 

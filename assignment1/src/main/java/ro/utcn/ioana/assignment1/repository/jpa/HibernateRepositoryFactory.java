@@ -1,4 +1,5 @@
 package ro.utcn.ioana.assignment1.repository.jpa;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;

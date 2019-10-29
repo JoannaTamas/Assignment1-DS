@@ -1,4 +1,5 @@
 package ro.utcn.ioana.assignment1.repository.jpa;
+
 import lombok.RequiredArgsConstructor;
 import ro.utcn.ioana.assignment1.model.Patient;
 import ro.utcn.ioana.assignment1.repository.api.PatientRepository;
@@ -15,10 +16,11 @@ import java.util.Optional;
 
 public class HibernatePatientRepository implements PatientRepository {
     private final EntityManager entityManager;
+
     @Override
     public List<Patient> findAll() {
-        CriteriaBuilder builder=entityManager.getCriteriaBuilder();
-        CriteriaQuery<Patient> query=builder.createQuery(Patient.class);
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Patient> query = builder.createQuery(Patient.class);
         query.select(query.from(Patient.class));
 
         return entityManager.createQuery(query).getResultList();
@@ -26,10 +28,10 @@ public class HibernatePatientRepository implements PatientRepository {
 
     @Override
     public Patient save(Patient patient) {
-        if(patient.getID() == null){
+        if (patient.getID() == null) {
             entityManager.persist(patient);
             return patient;
-        }else {
+        } else {
             return entityManager.merge(patient);
         }
     }
@@ -42,6 +44,6 @@ public class HibernatePatientRepository implements PatientRepository {
 
     @Override
     public Optional<Patient> findById(int id) {
-        return Optional.ofNullable(entityManager.find(Patient.class,id));
+        return Optional.ofNullable(entityManager.find(Patient.class, id));
     }
 }

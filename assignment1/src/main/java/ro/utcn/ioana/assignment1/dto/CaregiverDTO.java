@@ -12,18 +12,18 @@ import java.util.stream.Collectors;
 public class CaregiverDTO {
     private Integer id;
     private String name;
-    private String birthdate;
+    private String birth_date;
     private String gender;
-    private String address;
+    private String addr;
     private List<Integer> patients;
 
-    public static CaregiverDTO ofEntity(Caregiver caregiver){
-        CaregiverDTO caregiverDTO=new CaregiverDTO();
+    public static CaregiverDTO ofEntity(Caregiver caregiver) {
+        CaregiverDTO caregiverDTO = new CaregiverDTO();
         caregiverDTO.setId(caregiver.getID());
         caregiverDTO.setName(caregiver.getName());
-        caregiverDTO.setBirthdate(caregiver.getBirthdate());
+        caregiverDTO.setBirth_date(caregiver.getBirth_date());
         caregiverDTO.setGender(caregiver.getGender());
-        caregiverDTO.setAddress(caregiver.getAddress());
+        caregiverDTO.setAddr(caregiver.getAddr());
         if (!CollectionUtils.isEmpty(caregiver.getPatients())) {
             caregiverDTO.setPatients(caregiver.getPatients().stream()
                     .map(Patient::getID)

@@ -1,13 +1,13 @@
 import modelPatient from "../model/modelPatient";
 
 class PatientsListPresenter{
-    onCreatePatient(){
 
-    }
 
     onInit(){
-        modelPatient.newPatientList();
+        modelPatient.loadPatients();
     }
+
+    
 }
 
 const patientsListPresenter=new PatientsListPresenter();

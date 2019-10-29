@@ -1,12 +1,12 @@
 import React from "react";
 
-const PatientsList = ({ patients }) => (
+const PatientDelete = ({ patients, onDeletePatient }) => (
     
     <div>
         <div class="jumbotron jumbotron-fluid">  
    
         <div class="container "> 
-         <h1 >All the patients</h1>
+         <h1 >Patients</h1>
 
        
          <table class="table table-bordered">
@@ -17,6 +17,7 @@ const PatientsList = ({ patients }) => (
                     <th>Gender</th>
                     <th>Address</th>
                     <th>Medical Record</th>
+                  
 
 
               
@@ -32,7 +33,9 @@ const PatientsList = ({ patients }) => (
                             <td>{patient.gender}</td>
                             <td>{patient.addr}</td>
                             <td>{patient.medical_record}</td>
- 
+                           
+                            <td> <button className="button muted-button" onClick={() => onDeletePatient(index)}>Delete</button> </td>
+                         
                           
                         </tr>
                     ))
@@ -47,4 +50,4 @@ const PatientsList = ({ patients }) => (
     
 );
 
-export default PatientsList;
+export default PatientDelete;

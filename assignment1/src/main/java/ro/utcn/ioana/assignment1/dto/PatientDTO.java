@@ -13,19 +13,19 @@ import java.util.stream.Collectors;
 public class PatientDTO {
     private Integer id;
     private String name;
-    private String birthdate;
+    private String birth_date;
     private String gender;
-    private String address;
-    private String medicalRecord;
+    private String addr;
+    private String medical_record;
 
-    public static PatientDTO ofEntity(Patient patient){
-        PatientDTO patientDTO=new PatientDTO();
+    public static PatientDTO ofEntity(Patient patient) {
+        PatientDTO patientDTO = new PatientDTO();
         patientDTO.setId(patient.getID());
         patientDTO.setName(patient.getName());
-        patientDTO.setBirthdate(patient.getBirthdate());
+        patientDTO.setBirth_date(patient.getBirth_date());
         patientDTO.setGender(patient.getGender());
-        patientDTO.setAddress(patient.getAddress());
-        patientDTO.setMedicalRecord(patient.getMedicalRecord());
+        patientDTO.setAddr(patient.getAddr());
+        patientDTO.setMedical_record(patient.getMedical_record());
 
         return patientDTO;
 

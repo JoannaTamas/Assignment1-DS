@@ -10,7 +10,9 @@ export default class SmartPatientOps extends Component {
         return (
             <PatientOps
                  onListPatients  ={operationsPresenter.onListPatients}
-                 
+                 onDeletePatients={operationsPresenter.onDeletePatients}
+                 onEditPatient={operationsPresenter.onEditPatient}
+                 onAddPatient={operationsPresenter.onAddPatient}
                  />
         );
     }

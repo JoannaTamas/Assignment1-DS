@@ -8,11 +8,11 @@ import javax.persistence.EntityManager;
 import java.util.Optional;
 
 @RequiredArgsConstructor
-public class HibernateDoctorRepositoy  implements DoctorRepository {
+public class HibernateDoctorRepositoy implements DoctorRepository {
     private final EntityManager entityManager;
 
     @Override
     public Optional<Doctor> findById(int id) {
-        return Optional.ofNullable(entityManager.find(Doctor.class,id));
+        return Optional.ofNullable(entityManager.find(Doctor.class, id));
     }
 }

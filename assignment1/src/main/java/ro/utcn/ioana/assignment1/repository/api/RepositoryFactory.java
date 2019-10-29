@@ -5,8 +5,11 @@ import ro.utcn.ioana.assignment1.model.Medication;
 
 public interface RepositoryFactory {
     PatientRepository createPatientRepository();
+
     MedicationRepository createMedicationRepository();
+
     CaregiverRepository createCaregiverRepository();
+
     DoctorRepository createDoctorRepository();
 
 }

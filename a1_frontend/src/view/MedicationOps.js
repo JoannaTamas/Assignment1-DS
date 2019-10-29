@@ -2,7 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-const DoctorOperations = ({title1, onMedicationOps,onCaregiverOps,onPatientOps}) => (
+const MedicationOps = ({title1, onListMedication,onDeleteMedications,onAddMedication}) => (
     <div class="col-sm-6 offset-sm-3 text-center">
     <div class="jumbotron jumbotron-fluid">  
 
@@ -19,10 +19,11 @@ const DoctorOperations = ({title1, onMedicationOps,onCaregiverOps,onPatientOps})
         
         <h2>{ title1 || "Choose Operation" }</h2>
        
-       
-        <button type="button" class="btn btn-outline-primary" onClick={onPatientOps}> Patients operations</button>
-        <button type="button" class="btn btn-outline-primary" onClick={onMedicationOps}> Medication operations</button>
-        <button type="button" class="btn btn-outline-primary" onClick={onCaregiverOps}> Caregiver operations</button>
+        <button type="button" class="btn btn-outline-primary" onClick={onListMedication}>Display Medication</button>
+        <button type="button" class="btn btn-outline-primary" onClick={onDeleteMedications}>Delete Medication</button>
+        <button type="button" class="btn btn-outline-primary" onClick={onAddMedication}>Create Medication</button>
+
+
         <br />
         <br />
         
@@ -32,4 +33,4 @@ const DoctorOperations = ({title1, onMedicationOps,onCaregiverOps,onPatientOps})
     </div>
 );
 
-export default DoctorOperations;
+export default MedicationOps;
